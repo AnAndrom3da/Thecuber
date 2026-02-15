@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Full PLL Trainer | The Cuber</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #05080d;
+      --card: rgba(12, 20, 32, 0.85);
+      --neon: #00f6ff;
+      --neon-soft: rgba(0, 246, 255, 0.25);
+      --text: #e6faff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #0b1220, #04070c 70%);
+      color: var(--text);
+      font-family: "Orbitron", sans-serif;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 40px 24px 80px;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--neon);
+      text-shadow: 0 0 20px var(--neon-soft);
+      margin-bottom: 30px;
+    }
+
+    .search-bar {
+      max-width: 480px;
+      margin: 0 auto 50px;
+      display: block;
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--neon-soft);
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(20, 30, 45, 0.9), rgba(8, 14, 24, 0.9));
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid rgba(0, 246, 255, 0.15);
+      position: relative;
+    }
+
+    .card h2 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--neon);
+    }
+
+    .case-image {
+      aspect-ratio: 1 / 1;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--neon-soft);
+      margin-bottom: 12px;
+    }
+
+    .case-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .algorithm {
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-family: monospace;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .training {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .training input {
+      display: none;
+    }
+
+    .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      border: 1px solid var(--neon-soft);
+    }
+
+    .training input:checked + .check {
+      background: var(--neon);
+      box-shadow: 0 0 12px var(--neon);
+    }
+
+    .star {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .star.active {
+      color: var(--neon);
+      text-shadow: 0 0 10px var(--neon);
+    }
+    
+
+    header {
+        padding: 30px 40px;
+        border-bottom: 1px solid rgba(0,255,255,0.15);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: var(--neon);
+        text-shadow: 0 0 12px var(--neon-soft);
+        letter-spacing: 1px;
+    }
+
+    header p {
+        margin-top: 8px;
+        color: var(--text-muted);
+    }
+
+    main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px 80px;
+    }
+
+    section {
+        background: linear-gradient(180deg, #0c0c0c, #070707);
+        border: 1px solid rgba(0,255,255,0.12);
+        border-radius: 12px;
+        padding: 28px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 25px rgba(0,255,255,0.05);
+    }
+
+    section h2 {
+        margin-top: 0;
+        color: var(--neon);
+        text-shadow: 0 0 8px var(--neon-soft);
+        border-bottom: 1px solid rgba(0,255,255,0.2);
+        padding-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    h3 {
+        margin-top: 20px;
+        color: var(--neon-soft);
+    }
+
+    p {
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        padding-left: 22px;
+    }
+
+    li {
+        margin: 8px 0;
+        color: var(--text-muted);
+    }
+
+    .example {
+        margin-top: 15px;
+        padding: 16px 18px;
+        background: rgba(0,255,255,0.06);
+        border-left: 4px solid var(--neon);
+        border-radius: 6px;
+        font-size: 20px;
+    }
+
+    .example p {
+        margin: 6px 0;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+
+    .nav-buttons a {
+        display: inline-block;
+        padding: 12px 26px;
+        color: var(--neon);
+        text-decoration: none;
+        border: 1px solid var(--neon);
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        transition: all 0.2s ease;
+    }
+
+    .nav-buttons a:hover {
+        background: rgba(0,255,255,0.1);
+        box-shadow: 0 0 25px rgba(0,255,255,0.6);
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: var(--text-muted);
+        border-top: 1px solid rgba(0,255,255,0.15);
+    }
+
+    .logo {
+        font-size: 42px;
+        font-family: 'Orbitron', sans-serif;
+        color: #0ff;
+        text-shadow: 0 0 15px #0ff;
+        cursor: default;
+    }
+
+    li.logo a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+    }
+
+    li.logo {
+        list-style: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        header h1 {
+            font-size: 2rem;
+        }
+
+        main {
+            max-width: 90%;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* Adjust for tablet and mobile devices */
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        section {
+            padding: 18px;
+        }
+
+        .example {
+            font-size: 18px;
+        }
+
+        .nav-buttons a {
+            padding: 10px 20px;
+        }
+
+        footer {
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* Adjust for very small screens (phones) */
+        header h1 {
+            font-size: 1.6rem;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            padding: 15px;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+        }
+
+        .nav-buttons a {
+            padding: 8px 16px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        footer {
+            padding: 15px;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+  <li class="logo"><a href="index.html">The Cuber</a></li>
+  </nav>
+    
+    <p>Advanced Guide — Full F2L</p>
+</header>
+
+<div class="container">
+  <h1>Full PLL Trainer</h1>
+
+  <input class="search-bar" placeholder="Search PLL case..." oninput="filterCases(this.value)">
+
+  <div class="grid">
+    <!-- EXAMPLE CASE -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="card" data-case="1">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Ua-Perm</h2>
+  <a href="Ua(1).html" target="_blank">
+    <div class="case-image">
+      <img src="Ua.png" alt="PLL Case 1">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="2">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Ub-Perm</h2>
+  <a href="Ub(2).html" target="_blank">
+    <div class="case-image">
+      <img src="Ub.png" alt="PLL Case 2">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="3">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>H-Perm</h2>
+  <a href="H(3).html" target="_blank">
+    <div class="case-image">
+      <img src="H.png" alt="PLL Case 3">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="4">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Z-Perm</h2>
+  <a href="Z(4).html" target="_blank">
+    <div class="case-image">
+      <img src="Z.png" alt="PLL Case 4">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="5">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Aa-Perm</h2>
+  <a href="Aa(5).html" target="_blank">
+    <div class="case-image">
+      <img src="Aa.png" alt="PLL Case 5">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="6">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Ab-Perm</h2>
+  <a href="Ab(6).html" target="_blank">
+    <div class="case-image">
+      <img src="Ab.png" alt="PLL Case 6">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="7">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>E-Perm</h2>
+  <a href="E(7).html" target="_blank">
+    <div class="case-image">
+      <img src="E.png" alt="PLL Case 7">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="8">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>T-Perm</h2>
+  <a href="T(8).html" target="_blank">
+    <div class="case-image">
+      <img src="T.png" alt="PLL Case 8">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="9">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>F-Perm</h2>
+  <a href="F(9).html" target="_blank">
+    <div class="case-image">
+      <img src="F.png" alt="PLL Case 9">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="10">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Ja-Perm</h2>
+  <a href="Ja(10).html" target="_blank">
+    <div class="case-image">
+      <img src="Ja.png" alt="PLL Case 10">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="11">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Jb-Perm</h2>
+  <a href="Jb(11).html" target="_blank">
+    <div class="case-image">
+      <img src="Jb.png" alt="PLL Case 11">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="12">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Ra-Perm</h2>
+  <a href="Ra(12).html" target="_blank">
+    <div class="case-image">
+      <img src="Ra.png" alt="PLL Case 12">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="13">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Rb-Perm</h2>
+  <a href="Rb(13).html" target="_blank">
+    <div class="case-image">
+      <img src="Rb.png" alt="PLL Case 13">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="14">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Na-Perm</h2>
+  <a href="Na(14).html" target="_blank">
+    <div class="case-image">
+      <img src="Na.png" alt="PLL Case 14">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="15">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Nb-Perm</h2>
+  <a href="Nb(15).html" target="_blank">
+    <div class="case-image">
+      <img src="Nb.png" alt="PLL Case 15">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="16">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Y-Perm</h2>
+  <a href="Y(16).html" target="_blank">
+    <div class="case-image">
+      <img src="Y.png" alt="PLL Case 16">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="17">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>V-Perm</h2>
+  <a href="V(17).html" target="_blank">
+    <div class="case-image">
+      <img src="V.png" alt="PLL Case 17">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="18">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Ga-Perm</h2>
+  <a href="Ga(18).html" target="_blank">
+    <div class="case-image">
+      <img src="Ga.png" alt="PLL Case 18">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="19">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Gb-Perm</h2>
+  <a href="Gb(19).html" target="_blank">
+    <div class="case-image">
+      <img src="Gb.png" alt="PLL Case 19">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="20">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Gc-Perm</h2>
+  <a href="Gc(20).html" target="_blank">
+    <div class="case-image">
+      <img src="Gc.png" alt="PLL Case 20">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+<div class="card" data-case="21">
+  <div class="star" onclick="this.classList.toggle('active')">★</div>
+  <h2>Gd-Perm</h2>
+  <a href="Gd(21).html" target="_blank">
+    <div class="case-image">
+      <img src="Gd.png" alt="PLL Case 21">
+    </div>
+  </a>
+  <div class="algorithm">
+    U' (R U2 R' U) y' (R' U' R)
+  </div>
+  <div class="card-footer">
+    <div>Moves: 9</div>
+    <label class="training">
+      <input type="checkbox">
+      <span class="check"></span>
+      Training
+    </label>
+  </div>
+</div>
+
+
+
+
+
+
+
+    <!-- Copy this block for cases 2–41 -->
+  </div>
+</div>
+
+<script>
+  function filterCases(q) {
+    q = q.toLowerCase();
+    document.querySelectorAll(".card").forEach(card => {
+      card.style.display = card.dataset.name.includes(q) ? "block" : "none";
+    });
+  }
+</script>
+<script>
+    // Add event listener to all images inside cards
+    document.querySelectorAll('.card').forEach(card => {
+      card.querySelector('.case-image img').addEventListener('click', function() {
+        const caseId = card.getAttribute('data-case');
+        // Open f2l(n).html in a new tab with caseId
+        window.open(`f2l(${caseId}).html`, '_blank');
+      });
+    });
+  </script>
+</body>
+</html>
+    
+
+

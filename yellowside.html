@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yellow Side | The Cuber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+        --neon: #00ffff;
+        --neon-soft: rgba(0,255,255,0.6);
+        --bg-dark: #050505;
+        --panel-dark: #0b0b0b;
+        --text-main: #e6ffff;
+        --text-muted: #9adede;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+        color: var(--text-main);
+        line-height: 1.7;
+    }
+
+    header {
+        padding: 30px 40px;
+        border-bottom: 1px solid rgba(0,255,255,0.15);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: var(--neon);
+        text-shadow: 0 0 12px var(--neon-soft);
+        letter-spacing: 1px;
+    }
+
+    header p {
+        margin-top: 8px;
+        color: var(--text-muted);
+    }
+
+    main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px 80px;
+    }
+
+    section {
+        background: linear-gradient(180deg, #0c0c0c, #070707);
+        border: 1px solid rgba(0,255,255,0.12);
+        border-radius: 12px;
+        padding: 28px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 25px rgba(0,255,255,0.05);
+    }
+
+    section h2 {
+        margin-top: 0;
+        color: var(--neon);
+        text-shadow: 0 0 8px var(--neon-soft);
+        border-bottom: 1px solid rgba(0,255,255,0.2);
+        padding-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    h3 {
+        margin-top: 20px;
+        color: var(--neon-soft);
+    }
+
+    p {
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        padding-left: 22px;
+    }
+
+    li {
+        margin: 8px 0;
+        color: var(--text-muted);
+    }
+
+    .example {
+        margin-top: 15px;
+        padding: 16px 18px;
+        background: rgba(0,255,255,0.06);
+        border-left: 4px solid var(--neon);
+        border-radius: 6px;
+        font-size: 20px;
+    }
+
+    .example p {
+        margin: 6px 0;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+
+    .nav-buttons a {
+        display: inline-block;
+        padding: 12px 26px;
+        color: var(--neon);
+        text-decoration: none;
+        border: 1px solid var(--neon);
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        transition: all 0.2s ease;
+    }
+
+    .nav-buttons a:hover {
+        background: rgba(0,255,255,0.1);
+        box-shadow: 0 0 25px rgba(0,255,255,0.6);
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: var(--text-muted);
+        border-top: 1px solid rgba(0,255,255,0.15);
+    }
+
+    .logo {
+        font-size: 42px;
+        font-family: 'Orbitron', sans-serif;
+        color: #0ff;
+        text-shadow: 0 0 15px #0ff;
+        cursor: default;
+    }
+
+    li.logo a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+    }
+
+    li.logo {
+        list-style: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        header h1 {
+            font-size: 2rem;
+        }
+
+        main {
+            max-width: 90%;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* Adjust for tablet and mobile devices */
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        section {
+            padding: 18px;
+        }
+
+        .example {
+            font-size: 18px;
+        }
+
+        .nav-buttons a {
+            padding: 10px 20px;
+        }
+
+        footer {
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* Adjust for very small screens (phones) */
+        header h1 {
+            font-size: 1.6rem;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            padding: 15px;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+        }
+
+        .nav-buttons a {
+            padding: 8px 16px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        footer {
+            padding: 15px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <li class="logo"><a href="index.html">The Cuber</a></li>
+    </nav>
+    <p>Beginner Guide — Yellow Side</p>
+</header>
+
+<main>
+
+<section>
+    <h2>Goal: Solve the Yellow Side</h2>
+    <p>
+        Now that you have oriented the yellow edges correctly, you want to solve the yellow side. 
+        The goal in this step is to orient the yellow corners so that their yellow sticker is facing the top layer. 
+        After this step, permuting the yellow corners and edges is all that's left to finish the cube.
+    </p>
+</section>
+
+<section>
+    <h2>Step 1: Identify the shape</h2>
+    <p>There are a total of 7 possible cases in this step:</p>
+    
+    <h3>Case 1: The "Fish" or "Sune"</h3>
+    <p>
+        In this case, there is <strong>only 1 corner's yellow sticker facing up</strong>, resulting in a shape that looks like a "Fish".  
+        In this case, <strong>turn the top layer</strong> until the yellow sticker on the corner is placed in the <strong>front-left position</strong> of the cube.  
+        Looking at the side you're facing (with white on the bottom), if the top-right sticker is yellow, you're in the right case.  
+        If not, you're in  Case 2 .
+    </p>
+
+    <h3>Case 2: The other "Fish" or "Anti-Sune"</h3>
+    <p>
+        This case is <strong>identical to the "Fish" case</strong> but with a <strong>slight twist</strong>.  
+        In this case, <strong>turn the top layer</strong> until the corner is placed in the <strong>back-right position</strong>.  
+        Looking at the side you're facing (with white on the bottom), if the  top-left sticker  is yellow, you're in the  right case .  
+        If not, you're in  Case 1 .
+    </p>
+
+    <h3>Case 3: The "H" or "Double-Sune"</h3>
+    <p>
+        In this case, there are <strong>no corners oriented correctly</strong>.  
+        <strong>Turn the top layer</strong> until the  top-left and top-right corners  of the side you're currently facing (with white on the bottom) are yellow.
+        Rotate the entire cube 180° to check that the  top-left and top-right corners  of the side you’re now facing are also yellow.  
+        If they are, you're in the  right case . If not, you're in  Case 4 .
+        Now do either a U or U'.
+    </p>
+
+    <h3>Case 4: The "π" (Pi) or "T-Shirt"</h3>
+    <p>
+        This case is <strong>identical to the "H" case</strong> but with a <strong>slight twist (again)</strong>.  
+        Turn the top layer until the  top-left and top-right corners  of the side you're currently facing (with white on the bottom) are yellow.  
+        Rotate the entire cube 180° to check that the  top-left and top-right corners  of the side you're now facing are <strong>not yellow</strong>.  
+        If they aren't yellow, you're in the  right case . If they are yellow, you're in  Case 3 .  
+        Now, turn the top layer so that only the  front-top-right corner  of the side you're facing is yellow.
+    </p>
+
+    <h3>Case 5: The "U" or "Headlights"</h3>
+    <p>
+        In this case, there are <strong>2 corners oriented correctly</strong>.  
+        Turn the top layer until the solved corners are placed in the  front-left and front-right positions .  
+        Now, turn the entire cube 180°. Looking at the side you are currently facing (with white on the bottom), if the  top-left and top-right stickers are yellow , you’re in the  right case .  
+        If not, you're in  Case 6 .  
+        To fix this, turn the entire cube again so that the  front-top-right and back-right corners  are both yellow.
+    </p>
+
+    <h3>Case 6: The "T" or "Hammerhead"</h3>
+    <p>
+        This case is <strong>identical to the "U" case</strong> but with a <strong>slight twist</strong>.  
+        Turn the top layer until the solved corners are placed in the  front-left and front-right positions .  
+        Now, turn the entire cube 180°. Looking at the side you are currently facing (with white on the bottom), if the  top-left and top-right stickers are both not yellow , you're in the  right case .  
+        If they are yellow, you're in  Case 5 .  
+        Now, turn the top layer so that only the top-left corner of the side you are currently facing is yellow.
+    </p>
+
+    <h3>Case 7: The "L" (Not the Same as for Yellow Cross!) or "Triple-Sune"</h3>
+    <p>
+        In this case, there are also <strong>2 corners oriented correctly</strong>.  
+        Turn the top layer until the solved corners are placed in the  back-left and front-right positions .
+    </p>
+</section>
+
+<section>
+    <h2>Step 2: Performing the Algorithm</h2>
+    <p>
+        Now that you've identified the shape and oriented the cube correctly, it's time to perform one of the algorithms depending on the case you’ve got.
+        The <strong>"Fish" algorithm</strong> is used for all cases, but in a specific order and with a few changes.
+    </p>
+
+    <div class="example">
+        <p><strong>Fish Algorithm:</strong> <code>R U R' U R U2 R'</code></p>
+    </div>
+
+    <div class="example">
+        <p><strong>Case 1 (Fish):</strong> <code>R U R' U R U2 R'</code></p>
+    </div>
+    <div class="example">
+        <p><strong>Case 2 (Anti-Sune):</strong> <code>(Fish) U 2*(Fish)</code></p>
+    </div>
+    <div class="example">
+        <p><strong>Case 3 (Double-Sune):</strong> <code>2*(Fish)</code></p>
+    </div>
+    <div class="example">
+        <p><strong>Case 4 (Pi):</strong> <code>(Fish) U' (Fish)</code></p>
+    </div>
+    <div class="example">
+        <p><strong>Case 5 (Headlights):</strong> <code>(Fish) U (case 4)</code></p>
+    </div>
+    <div class="example">
+        <p><strong>Case 6 (Hammerhead):</strong> <code>(Fish) U' (Case 2)</code></p>
+    </div>
+    <div class="example">
+        <p><strong>Case 7 (Triple-Sune):</strong> <code>3*(Fish)</code></p>
+    </div>
+</section>
+
+<section>
+    <div class="example">
+        <p>🎉 Yellow side complete — only permuting the pieces needs to be done!</p>
+    </div>
+</section>
+
+<section>
+    <h2>Common Mistakes</h2>
+    <ul>
+        <li>Rotating the entire cube instead of only the top layer</li>
+        <li>Not checking the shape and orienting the top layer correctly</li>
+    </ul>
+</section>
+
+<div class="nav-buttons">
+    <a href="yellowcross.html">← Back to Yellow Cross</a>
+    <a href="yellowcorners.html">Continue to Yellow Corners →</a>
+</div>
+
+</main>
+
+<footer>
+    <p>© The Cuber — Beginner Series 🌼</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cuber</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#111111">
+<style>
+/* Body */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: rgba(10,10,10,0.9);
+  box-shadow: 0 0 15px #00f;
+}
+
+.logo {
+  font-size: 50px;
+  color: #0ff;
+  text-shadow: 0 0 15px #0ff;
+  cursor: default;
+}
+
+li.logo a {
+  text-decoration: none; /* removes underline */
+  color: inherit;        /* keeps the text color same as parent */
+  font-weight: bold;     /* optional: make it stand out like a logo */
+}
+
+li.logo {
+  list-style: none; /* removes the dot */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #0ff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: rgba(20,20,20,0.95);
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 100;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  list-style: none;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sub-dropdown Menu (LEFT) */
+.sub-dropdown {
+  position: relative;
+}
+
+.sub-dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 180px; /* slide LEFT of parent */
+  background: rgba(30,30,30,0.95);
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  min-width: 220px;
+  padding: 10px 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  list-style: none;
+}
+
+.sub-dropdown:hover > .sub-dropdown-menu,
+.sub-dropdown-menu:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Third-level sub-dropdown (inside 7 steps) */
+.sub2-dropdown {
+  position: relative;
+}
+
+.sub2-dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 100%; /* slide LEFT of parent */
+  background: rgba(40,40,40,0.95);
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  min-width: 220px;
+  padding: 10px 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  list-style: none;
+}
+
+.sub2-dropdown:hover > .sub2-dropdown-menu,
+.sub2-dropdown-menu:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dropdown Items */
+.dropdown-menu li,
+.sub-dropdown-menu li,
+.sub2-dropdown-menu li {
+  padding: 10px 20px;
+}
+
+.dropdown-menu li:hover,
+.sub-dropdown-menu li:hover,
+.sub2-dropdown-menu li:hover {
+  background: rgba(0,255,255,0.2);
+  cursor: pointer;
+}
+
+/* Optional scroll if too long */
+.sub-dropdown-menu,
+.sub2-dropdown-menu {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdown-menu,
+.sub-dropdown-menu {
+  overflow: visible;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #0D0D0D, #111111);
+}
+
+.hero h1 {
+  font-size: 48px;
+  color: #0ff;
+  text-shadow: 0 0 20px #0ff;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.hero .btn {
+  text-decoration: none;
+  color: #0ff;
+  border: 2px solid #0ff;
+  padding: 10px 25px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.hero .btn:hover {
+  background: #0ff;
+  color: #000;
+  box-shadow: 0 0 15px #0ff;
+}
+
+/* Features Section */
+.features {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.features h2 {
+  font-size: 36px;
+  color: #0ff;
+  margin-bottom: 50px;
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: rgba(20,20,20,0.9);
+  border: 1px solid #0ff;
+  border-radius: 10px;
+  padding: 30px 20px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px #0ff;
+}
+
+.card h3 {
+  color: #0ff;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(10,10,10,0.9);
+  border-top: 1px solid #0ff;
+  color: #0ff;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .logo {
+    font-size: 40px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .features h2 {
+    font-size: 30px;
+  }
+
+  .feature-cards {
+    gap: 20px;
+  }
+
+  .card {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Fix the submenu positioning to be visible */
+  .sub-dropdown-menu {
+    position: relative;
+    right: 0;
+    top: 0;
+    min-width: 100%;
+  }
+
+  .sub2-dropdown-menu {
+    right: 0;
+    top: 0;
+    min-width: 100%;
+  }
+
+  /* Ensure that submenus are on top of everything */
+  .sub-dropdown-menu,
+  .sub2-dropdown-menu {
+    z-index: 200;
+  }
+
+  /* Dropdown visibility adjustment for small screens */
+  .dropdown-menu {
+    position: relative;
+    min-width: 100%;
+    left: 0;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding-left: 20px;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .logo {
+    font-size: 35px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .features h2 {
+    font-size: 28px;
+  }
+
+  .feature-cards {
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Same adjustments for smaller phones */
+  .sub-dropdown-menu,
+  .sub2-dropdown-menu {
+    min-width: 100%;
+    position: relative;
+    left: 0;
+  }
+
+  .sub-dropdown,
+  .sub2-dropdown {
+    display: block;
+    position: relative;
+  }
+
+  .dropdown-menu {
+    min-width: 100%;
+    left: 0;
+  }
+
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .logo {
+    font-size: 30px;
+  }
+
+  .nav-links {
+    padding-left: 10px;
+    gap: 10px;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .features h2 {
+    font-size: 24px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 15px;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<nav class="navbar">
+  <li class="logo"><a href="index.html">The Cuber</a></li>
+  <ul class="nav-links">
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="algorithmtrainer.html">Algorithm Trainer</a></li>
+    <li class="dropdown">
+      <a href="index.html">3x3 Cube ▼</a>
+      <ul class="dropdown-menu">
+        <!-- Beginner -->
+        <li class="sub-dropdown">
+          <a href="index.html">Beginner</a>
+          <ul class="sub-dropdown-menu">
+            <li><a href="howtoreadalgorithms.html">How to read Algorithms</a></li>
+            <li class="sub2-dropdown">
+              <a href="index.html">The 7 steps to solve a cube ▼</a>
+              <ul class="sub2-dropdown-menu">
+                <li><a href="daisy.html">Daisy</a></li>
+                <li><a href="firstlayer.html">First Layer</a></li>
+                <li><a href="secondlayer.html">Second Layer</a></li>
+                <li><a href="yellowcross.html">Yellow Cross</a></li>
+                <li><a href="yellowside.html">Yellow Side</a></li>
+                <li><a href="yellowcorners.html">Yellow Layer Corners</a></li>
+                <li><a href="yellowedges.html">Yellow Layer Edges</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <!-- Intermediate -->
+        <li class="sub-dropdown">
+          <a href="index.html">Intermediate</a>
+          <ul class="sub-dropdown-menu">
+            <li><a href="thefondamentals.html">The Fondamentals</a></li>
+            <li><a href="cfopintro.html">CFOP Intro</a></li>
+            <li><a href="ollbasics.html">OLL Basics</a></li>
+            <li><a href="pllbasics.html">PLL Basics</a></li>
+          </ul>
+        </li>
+        <!-- Advanced -->
+        <li class="sub-dropdown">
+          <a href="index.html">Advanced</a>
+          <ul class="sub-dropdown-menu">
+            <li><a href="fullf2l.html">Full F2L</a></li>
+            <li><a href="fulloll.html">Full OLL</a></li>
+            <li><a href="fullpll.html">Full PLL</a></li>
+          </ul>
+        </li>
+        <!-- Pro -->
+        <li class="sub-dropdown">
+          <a href="index.html">Pro</a>
+          <ul class="sub-dropdown-menu">
+            <li><a href="speedsolvingtips.html">Speed Solving Tips</a></li>
+            <li><a href="advancedalgorithms.html">Advanced Algorithms</a></li>
+            <li><a href="competitionstrategies.html">Competition Strategies</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to The Cuber</h1>
+    <p>Master the Rubik's Cube, from beginner to pro!</p>
+    <a href="timer.html" class="btn">Start Solving</a>
+  </div>
+</section>
+
+<section class="features">
+  <h2>Learn by Level</h2>
+  <div class="feature-cards">
+    <div class="card">
+      <h3>Beginner</h3>
+      <p>Step-by-step guides to solve your first cube.</p>
+    </div>
+    <div class="card">
+      <h3>Intermediate</h3>
+      <p>Learn algorithms, OLL, PLL, and improve your speed.</p>
+    </div>
+    <div class="card">
+      <h3>Advanced & Pro</h3>
+      <p>Master CFOP, finger tricks, and competition strategies.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+/* Optional JS delay to prevent dropdown from disappearing instantly */
+const dropdown = document.querySelector('.dropdown');
+const menu = dropdown.querySelector('.dropdown-menu');
+let timeout;
+
+dropdown.addEventListener('mouseenter', () => {
+  clearTimeout(timeout);
+  menu.style.display = 'block';
+});
+
+dropdown.addEventListener('mouseleave', () => {
+  timeout = setTimeout(() => {
+    menu.style.display = 'none';
+  }, 300); // 300ms delay before hiding
+});
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("Service Worker Registered"))
+    .catch(err => console.log("Service Worker Failed:", err));
+}
+</script>
+
+
+<footer>
+  <p>&copy; 2026 The Cuber | All rights reserved</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To Read Algorithms | The Cuber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+        --neon: #00ffff;
+        --neon-soft: rgba(0,255,255,0.6);
+        --bg-dark: #050505;
+        --panel-dark: #0b0b0b;
+        --text-main: #e6ffff;
+        --text-muted: #9adede;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+        color: var(--text-main);
+        line-height: 1.7;
+    }
+
+    header {
+        padding: 30px 40px;
+        border-bottom: 1px solid rgba(0,255,255,0.15);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: var(--neon);
+        text-shadow: 0 0 12px var(--neon-soft);
+        letter-spacing: 1px;
+    }
+
+    header p {
+        margin-top: 8px;
+        color: var(--text-muted);
+    }
+
+    main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px 80px;
+    }
+
+    section {
+        background: linear-gradient(180deg, #0c0c0c, #070707);
+        border: 1px solid rgba(0,255,255,0.12);
+        border-radius: 12px;
+        padding: 28px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 25px rgba(0,255,255,0.05);
+    }
+
+    section h2 {
+        margin-top: 0;
+        color: var(--neon);
+        text-shadow: 0 0 8px var(--neon-soft);
+        border-bottom: 1px solid rgba(0,255,255,0.2);
+        padding-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    h3 {
+        margin-top: 20px;
+        color: var(--neon-soft);
+    }
+
+    p {
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        padding-left: 22px;
+    }
+
+    li {
+        margin: 8px 0;
+        color: var(--text-muted);
+    }
+
+    .example {
+        margin-top: 15px;
+        padding: 16px 18px;
+        background: rgba(0,255,255,0.06);
+        border-left: 4px solid var(--neon);
+        border-radius: 6px;
+        font-size: 20px;
+    }
+
+    .example p {
+        margin: 6px 0;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+
+    .nav-buttons a {
+        display: inline-block;
+        padding: 12px 26px;
+        color: var(--neon);
+        text-decoration: none;
+        border: 1px solid var(--neon);
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        transition: all 0.2s ease;
+    }
+
+    .nav-buttons a:hover {
+        background: rgba(0,255,255,0.1);
+        box-shadow: 0 0 25px rgba(0,255,255,0.6);
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: var(--text-muted);
+        border-top: 1px solid rgba(0,255,255,0.15);
+    }
+
+    .logo {
+        font-size: 42px;
+        font-family: 'Orbitron', sans-serif;
+        color: #0ff;
+        text-shadow: 0 0 15px #0ff;
+        cursor: default;
+    }
+
+    li.logo a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+    }
+
+    li.logo {
+        list-style: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        header h1 {
+            font-size: 2rem;
+        }
+
+        main {
+            max-width: 90%;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* Adjust for tablet and mobile devices */
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        section {
+            padding: 18px;
+        }
+
+        .example {
+            font-size: 18px;
+        }
+
+        .nav-buttons a {
+            padding: 10px 20px;
+        }
+
+        footer {
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* Adjust for very small screens (phones) */
+        header h1 {
+            font-size: 1.6rem;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            padding: 15px;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+        }
+
+        .nav-buttons a {
+            padding: 8px 16px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        footer {
+            padding: 15px;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+  <li class="logo"><a href="index.html">The Cuber</a></li>
+  </nav>
+    <h1>How to Read Cubing Algorithms</h1>
+    <p>A complete beginner-to-intermediate guide to Rubik’s Cube notation</p>
+</header>
+
+<section>
+    <h2>What Is a Cubing Algorithm?</h2>
+    <p>
+        A cubing algorithm is a sequence of moves written using standard notation.
+        Each move tells you <strong>which face to turn</strong> and <strong>how to turn it</strong>.
+        Algorithms are always read from <strong>left to right</strong>.
+    </p>
+</section>
+
+<section>
+    <h2>Cube Orientation</h2>
+    <p>Before starting an algorithm, always hold the cube correctly:</p>
+    <ul>
+        <li><strong>Front (F)</strong> facing you</li>
+        <li><strong>Up (U)</strong> on top</li>
+        <li><strong>Right (R)</strong> on your right</li>
+    </ul>
+    <p>Many mistakes come from starting with the wrong orientation.</p>
+</section>
+
+<section>
+    <h2>Basic Face Moves</h2>
+    <ul>
+        <li><code>R</code> – Right</li>
+        <li><code>L</code> – Left</li>
+        <li><code>U</code> – Up</li>
+        <li><code>D</code> – Down</li>
+        <li><code>F</code> – Front</li>
+        <li><code>B</code> – Back</li>
+    </ul>
+    <p>
+        A single letter means a <strong>90° clockwise turn</strong> when looking directly
+        at that face.
+    </p>
+</section>
+
+<section>
+    <h2>Clockwise vs Perspective (Very Important)</h2>
+    <p>
+        Clockwise is always defined from the <strong>face’s point of view</strong>,
+        not yours.
+    </p>
+    <p>
+        This is why moves like <code>B</code>, <code>L</code>, and <code>D</code> can feel reversed.
+        Imagine rotating the cube so you are directly facing that side.
+    </p>
+</section>
+
+<section>
+    <h2>Move Modifiers</h2>
+    <ul>
+        <li><code>'</code> – Counterclockwise</li>
+        <li><code>2</code> – 180° turn</li>
+    </ul>
+
+    <div class="example">
+        <p><code>R'</code> = Right face counterclockwise</p>
+        <p><code>U2</code> = Top face twice</p>
+    </div>
+</section>
+
+<section>
+    <h2>Wide Moves</h2>
+    <p>Wide moves turn two layers at once:</p>
+    <ul>
+        <li><code>Rw</code> or <code>r</code> – Right + middle layer</li>
+        <li><code>Uw</code> or <code>u</code> – Top + middle layer</li>
+        <li><code>Fw</code> or <code>f</code> – Front + middle layer</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Slice Moves</h2>
+    <ul>
+        <li><code>M</code> – Middle slice (moves like L')</li>
+        <li><code>E</code> – Equatorial slice (moves like D')</li>
+        <li><code>S</code> – Standing slice (moves like F)</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Cube Rotations</h2>
+    <p>Rotations turn the entire cube:</p>
+    <ul>
+        <li><code>x</code> – Rotate like R</li>
+        <li><code>y</code> – Rotate like U</li>
+        <li><code>z</code> – Rotate like F</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Triggers (Mini-Algorithms)</h2>
+    <p>
+        Many algorithms are built from small reusable patterns called <strong>triggers</strong>.
+        Recognizing them makes algorithms easier to learn.
+    </p>
+    <ul>
+        <li><strong>Sexy Move:</strong> <code>R U R' U'</code></li>
+        <li><strong>Inverse Sexy:</strong> <code>U R U' R'</code></li>
+        <li><strong>Sledgehammer:</strong> <code>R' F R F'</code></li>
+        <li><strong>Hedge:</strong> <code>F R' F' R</code></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Understanding Algorithm Purpose</h2>
+    <p>
+        Algorithms are designed to move only a few pieces while leaving the rest
+        of the cube unchanged.
+    </p>
+    <p>
+        Ask yourself:
+    </p>
+    <ul>
+        <li>Which pieces move?</li>
+        <li>Which pieces stay the same?</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Inverses (Undoing an Algorithm)</h2>
+    <p>
+        Every algorithm has an inverse that undoes it.
+    </p>
+    <ol>
+        <li>Reverse the order</li>
+        <li>Invert each move</li>
+    </ol>
+
+    <div class="example">
+        <p><strong>Algorithm:</strong> <code>R U R'</code></p>
+        <p><strong>Inverse:</strong> <code>R U' R'</code></p>
+    </div>
+</section>
+
+<section>
+    <h2>Setup Moves</h2>
+    <p>
+        Some algorithms temporarily move pieces into position, run a main algorithm,
+        then undo the setup.
+    </p>
+    <div class="example">
+        <p><code>Setup → Algorithm → Undo Setup</code></p>
+    </div>
+</section>
+
+<section>
+    <h2>Mirrored Algorithms</h2>
+    <p>
+        Many right-handed algorithms have left-handed mirrors.
+    </p>
+    <div class="example">
+        <p><strong>Right-handed:</strong> <code>R U R'</code></p>
+        <p><strong>Left-handed mirror:</strong> <code>L' U' L</code></p>
+    </div>
+</section>
+
+<section>
+    <h2>Commutators & Conjugates (Advanced)</h2>
+    <p>
+        Advanced cubing uses structured patterns to precisely control piece movement.
+    </p>
+    <div class="example">
+        <p><code>[A, B] = A B A' B'</code></p>
+    </div>
+    <p>
+        These are powerful tools for creating and understanding algorithms.
+    </p>
+</section>
+
+<section>
+    <h2>Finger Tricks & Regrips</h2>
+    <ul>
+        <li>Most <code>U</code> moves are index-finger flicks</li>
+        <li>Avoid regripping whenever possible</li>
+        <li>Efficiency matters more than raw speed</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Common Mistakes</h2>
+    <ul>
+        <li>Wrong cube orientation</li>
+        <li>Misreading <code>'</code> or <code>2</code></li>
+        <li>Turning too fast before understanding the move</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Final Advice</h2>
+    <p>
+        Accuracy comes before speed. Slow, correct practice builds fast solves later.
+        Understanding algorithms makes cubing far more enjoyable.
+    </p>
+</section>
+
+<footer>
+    <p>Happy cubing 🧩 Keep turning!</p>
+</footer>
+
+</body>
+</html>

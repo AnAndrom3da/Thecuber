@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Layer | The Cuber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+        --neon: #00ffff;
+        --neon-soft: rgba(0,255,255,0.6);
+        --bg-dark: #050505;
+        --panel-dark: #0b0b0b;
+        --text-main: #e6ffff;
+        --text-muted: #9adede;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+        color: var(--text-main);
+        line-height: 1.7;
+    }
+
+    header {
+        padding: 30px 40px;
+        border-bottom: 1px solid rgba(0,255,255,0.15);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: var(--neon);
+        text-shadow: 0 0 12px var(--neon-soft);
+        letter-spacing: 1px;
+    }
+
+    header p {
+        margin-top: 8px;
+        color: var(--text-muted);
+    }
+
+    main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px 80px;
+    }
+
+    section {
+        background: linear-gradient(180deg, #0c0c0c, #070707);
+        border: 1px solid rgba(0,255,255,0.12);
+        border-radius: 12px;
+        padding: 28px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 25px rgba(0,255,255,0.05);
+    }
+
+    section h2 {
+        margin-top: 0;
+        color: var(--neon);
+        text-shadow: 0 0 8px var(--neon-soft);
+        border-bottom: 1px solid rgba(0,255,255,0.2);
+        padding-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    h3 {
+        margin-top: 20px;
+        color: var(--neon-soft);
+    }
+
+    p {
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        padding-left: 22px;
+    }
+
+    li {
+        margin: 8px 0;
+        color: var(--text-muted);
+    }
+
+    .example {
+        margin-top: 15px;
+        padding: 16px 18px;
+        background: rgba(0,255,255,0.06);
+        border-left: 4px solid var(--neon);
+        border-radius: 6px;
+        font-size: 20px;
+    }
+
+    .example p {
+        margin: 6px 0;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+
+    .nav-buttons a {
+        display: inline-block;
+        padding: 12px 26px;
+        color: var(--neon);
+        text-decoration: none;
+        border: 1px solid var(--neon);
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        transition: all 0.2s ease;
+    }
+
+    .nav-buttons a:hover {
+        background: rgba(0,255,255,0.1);
+        box-shadow: 0 0 25px rgba(0,255,255,0.6);
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: var(--text-muted);
+        border-top: 1px solid rgba(0,255,255,0.15);
+    }
+
+    .logo {
+        font-size: 42px;
+        font-family: 'Orbitron', sans-serif;
+        color: #0ff;
+        text-shadow: 0 0 15px #0ff;
+        cursor: default;
+    }
+
+    li.logo a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+    }
+
+    li.logo {
+        list-style: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        header h1 {
+            font-size: 2rem;
+        }
+
+        main {
+            max-width: 90%;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* Adjust for tablet and mobile devices */
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        section {
+            padding: 18px;
+        }
+
+        .example {
+            font-size: 18px;
+        }
+
+        .nav-buttons a {
+            padding: 10px 20px;
+        }
+
+        footer {
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* Adjust for very small screens (phones) */
+        header h1 {
+            font-size: 1.6rem;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            padding: 15px;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+        }
+
+        .nav-buttons a {
+            padding: 8px 16px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        footer {
+            padding: 15px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+  <li class="logo"><a href="index.html">The Cuber</a></li>
+  </nav>
+    
+    <p>Beginner Guide — Second Layer</p>
+</header>
+
+<main>
+
+<section>
+    <h2>Goal: Solve the Second Layer</h2>
+    <p>
+        The second (middle) layer consists of the four edge pieces that do not contain yellow.  
+        The goal is to place each edge so that the  side colors match their centers , while keeping the  first layer solved .  
+        After this step, only the top (yellow) layer will remain unsolved.
+    </p>
+</section>
+
+<section>
+    <h2>Step 1: Identify a Middle Layer Edge</h2>
+    <p>
+        Find an edge piece with  no yellow  on it.  
+        Check if it is already in the middle layer and in the correct spot.  
+        If it is misplaced, it will need to be removed first (covered later).  
+        Always keep the  white cross on the bottom  while working.
+    </p>
+</section>
+
+<section>
+    <h2>Step 2: Insert an Edge from the Top Layer</h2>
+
+    <h3>Align the Edge Above Its Center</h3>
+    <p>
+        Hold the cube so the  white cross is on the bottom .  
+        Find the edge piece in the top layer.  
+        Turn the  top layer only  until the edge’s  front color matches the center it sits above .  
+        <br>
+        Example: edge is green-orange, with  orange facing up . Turn the top layer so it sits  above the green center .  
+        This ensures it goes into the correct slot when you apply the algorithm.
+    </p>
+
+    <h3>Check Direction: Left or Right</h3>
+    <p>
+        Look at the  top color of the edge  (the color on the top face):  
+        <ul>
+            <li>If it should go to the  right , use the right algorithm.</li>
+            <li>If it should go to the  left , use the left algorithm.</li>
+        </ul>
+    </p>
+
+    <h3>Edge Goes to the Right</h3>
+    <p>
+        <strong>Algorithm:</strong> <code>U R U' R' U' F' U F</code>  
+        <strong>Beginner Explanation:</strong> Keep the  white cross on the bottom . Move the top layer until the edge is in front, then follow the moves step by step. The edge will move into the middle layer on the right.
+    </p>
+
+    <h3>Edge Goes to the Left</h3>
+    <p>
+        <strong>Algorithm:</strong> <code>U' L' U L U F U' F'</code>  
+        <strong>Beginner Explanation:</strong> Keep the  white cross on the bottom . Move the top layer until the edge is in front, then follow the moves step by step. The edge will move into the middle layer on the left.
+    </p>
+
+    <h3>Misplaced Edge Already in Middle Layer</h3>
+    <p>
+        If an edge is already in the middle layer but in the wrong place:  
+        <ul>
+            <li>Move it out to the top layer first using one of the algorithms.</li>
+            <li>Then insert it correctly using the top layer instructions above.</li>
+        </ul>
+    </p>
+
+    <h3>Repeat for All Edges</h3>
+    <p>
+        Solve all four middle layer edges, one at a time.  
+        Keep the  white cross on the bottom  and  align each edge above its correct center  before inserting.  
+    </p>
+
+    <div class="example">
+        <p>🎉 First two layers complete — only the yellow top layer remains unsolved!</p>
+    </div>
+</section>
+
+<section>
+    <h2>Common Mistakes</h2>
+    <ul>
+        <li>Rotating the entire cube instead of only the top layer</li>
+        <li>Misplacing edges and breaking the first layer</li>
+        <li>Not checking which direction (left or right) the edge should go</li>
+    </ul>
+</section>
+
+<div class="nav-buttons">
+    <a href="firstlayer.html">← Back to First Layer</a>
+    <a href="yellowcross.html">Continue to Yellow Cross →</a>
+</div>
+
+</main>
+
+<footer>
+    <p>© The Cuber — Beginner Series 🌼</p>
+</footer>
+
+</body>
+</html>

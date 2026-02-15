@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Layer | The Cuber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+        --neon: #00ffff;
+        --neon-soft: rgba(0,255,255,0.6);
+        --bg-dark: #050505;
+        --panel-dark: #0b0b0b;
+        --text-main: #e6ffff;
+        --text-muted: #9adede;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+        color: var(--text-main);
+        line-height: 1.7;
+    }
+
+    header {
+        padding: 30px 40px;
+        border-bottom: 1px solid rgba(0,255,255,0.15);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: var(--neon);
+        text-shadow: 0 0 12px var(--neon-soft);
+        letter-spacing: 1px;
+    }
+
+    header p {
+        margin-top: 8px;
+        color: var(--text-muted);
+    }
+
+    main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px 80px;
+    }
+
+    section {
+        background: linear-gradient(180deg, #0c0c0c, #070707);
+        border: 1px solid rgba(0,255,255,0.12);
+        border-radius: 12px;
+        padding: 28px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 25px rgba(0,255,255,0.05);
+    }
+
+    section h2 {
+        margin-top: 0;
+        color: var(--neon);
+        text-shadow: 0 0 8px var(--neon-soft);
+        border-bottom: 1px solid rgba(0,255,255,0.2);
+        padding-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    h3 {
+        margin-top: 20px;
+        color: var(--neon-soft);
+    }
+
+    p {
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        padding-left: 22px;
+    }
+
+    li {
+        margin: 8px 0;
+        color: var(--text-muted);
+    }
+
+    .example {
+        margin-top: 15px;
+        padding: 16px 18px;
+        background: rgba(0,255,255,0.06);
+        border-left: 4px solid var(--neon);
+        border-radius: 6px;
+        font-size: 20px;
+    }
+
+    .example p {
+        margin: 6px 0;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+
+    .nav-buttons a {
+        display: inline-block;
+        padding: 12px 26px;
+        color: var(--neon);
+        text-decoration: none;
+        border: 1px solid var(--neon);
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        transition: all 0.2s ease;
+    }
+
+    .nav-buttons a:hover {
+        background: rgba(0,255,255,0.1);
+        box-shadow: 0 0 25px rgba(0,255,255,0.6);
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: var(--text-muted);
+        border-top: 1px solid rgba(0,255,255,0.15);
+    }
+
+    .logo {
+        font-size: 42px;
+        font-family: 'Orbitron', sans-serif;
+        color: #0ff;
+        text-shadow: 0 0 15px #0ff;
+        cursor: default;
+    }
+
+    li.logo a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+    }
+
+    li.logo {
+        list-style: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        header h1 {
+            font-size: 2rem;
+        }
+
+        main {
+            max-width: 90%;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* Adjust for tablet and mobile devices */
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        section {
+            padding: 18px;
+        }
+
+        .example {
+            font-size: 18px;
+        }
+
+        .nav-buttons a {
+            padding: 10px 20px;
+        }
+
+        footer {
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* Adjust for very small screens (phones) */
+        header h1 {
+            font-size: 1.6rem;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            padding: 15px;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+        }
+
+        .nav-buttons a {
+            padding: 8px 16px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        footer {
+            padding: 15px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+  <li class="logo"><a href="index.html">The Cuber</a></li>
+  </nav>
+    
+    <p>Beginner Guide — Complete Your First Layer</p>
+</header>
+
+<main>
+
+<section>
+    <h2>Before You Start</h2>
+    <ul>
+        <li>Daisy is complete</li>
+        <li>Yellow center is on top</li>
+        <li>White edges surround the yellow center</li>
+    </ul>
+    <p>
+        If your Daisy isn’t ready yet, it’s okay — go back and review it first.
+    </p>
+</section>
+
+<section>
+    <h2>Goal: The First Layer</h2>
+    <p>
+        The first layer is the bottom face fully white, with all side colors matching
+        their centers.
+    </p>
+</section>
+
+<section>
+    <h2>Step 1: Turn the Daisy into the White Cross</h2>
+    <h3>Match Colors</h3>
+    <p>Turn the top layer until the side color of a white edge matches the center below it.</p>
+    <h3>Move Edge Down</h3>
+    <p>Once matched, rotate that face twice to move the white edge to the bottom.</p>
+    <h3>Repeat</h3>
+    <p>Do this for all four white edges.</p>
+
+    <div class="example">
+        <p>✅ White cross on the bottom, side colors aligned</p>
+    </div>
+</section>
+
+<section>
+    <h2>Step 2: Add the White Corners</h2>
+
+    <h3>Find the Correct Corner (Top Layer)</h3>
+    <p>Look for a corner with <strong>white + two matching side colors that is on the top layer</strong>.</p>
+
+    <h3>Position It Above Its Spot (Top Layer)</h3>
+    <p>
+        Hold the cube so the <strong>white cross is on the bottom</strong>.  
+        Find where the corner belongs on the bottom layer.  
+        Turn the <strong>top layer only</strong> so the corner is <strong>directly above its target position</strong>.  
+        Rotate the <strong>cube itself</strong> if needed so the corner is in the <strong>front-right position of the top layer</strong> — this is the position it must be in <strong>before executing the algorithm</strong>.  
+        Keep the white cross on the bottom — only the top layer moves for alignment.
+    </p>
+
+    <h3>Move the Corner Down (Top Layer)</h3>
+    <p>
+        Execute the sequence <strong>R U R' U'</strong> to move the corner from the top layer into the bottom layer.  
+        Repeat as needed until the corner drops into place.  
+        Do this for all four corners.
+    </p>
+
+    <h3>Bottom Layer Case</h3>
+    <p>
+        Sometimes the corner you need is <strong>already in the bottom layer</strong> but not in the correct position:  
+        <ul>
+            <li>Hold the cube so the white cross is on the bottom.</li>
+            <li>Rotate the <strong>cube itself</strong> so the corner is in the <strong>front-right position of the bottom layer</strong>.</li>
+            <li>Execute the algorithm <strong>R U R' U'</strong>. This moves the corner to the top layer.</li>
+            <li>Then follow the <strong>top layer steps</strong> to place it correctly.</li>
+        </ul>
+    </p>
+
+    <h3>Repeat Until First Layer is Complete</h3>
+    <p>
+        Handle each corner one at a time.  
+        After all corners are in place, the <strong>entire first layer is solved</strong>:
+        <ul>
+            <li>White face is solid</li>
+            <li>Side colors match centers</li>
+        </ul>
+    </p>
+
+    <div class="example">
+        <p>🎉 First layer complete — white face and side colors aligned!</p>
+    </div>
+</section>
+
+
+<section>
+    <h2>Common Mistakes</h2>
+    <ul>
+        <li>Corner twisted incorrectly</li>
+        <li>White edge or corner broken after placement</li>
+        <li>Cube looks scrambled in the process</li>
+    </ul>
+    <p>Don’t worry — mistakes are normal. Check and try again as needed.</p>
+</section>
+
+<div class="nav-buttons">
+    <a href="daisy.html">← Back to the Daisy</a>
+    <a href="secondlayer.html">Continue to the Second Layer →</a>
+</div>
+
+</main>
+
+<footer>
+    <p>© The Cuber — Beginner Series 🌼</p>
+</footer>
+
+</body>
+</html>

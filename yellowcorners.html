@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yellow Corners | The Cuber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+        --neon: #00ffff;
+        --neon-soft: rgba(0,255,255,0.6);
+        --bg-dark: #050505;
+        --panel-dark: #0b0b0b;
+        --text-main: #e6ffff;
+        --text-muted: #9adede;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+        color: var(--text-main);
+        line-height: 1.7;
+    }
+
+    header {
+        padding: 30px 40px;
+        border-bottom: 1px solid rgba(0,255,255,0.15);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: var(--neon);
+        text-shadow: 0 0 12px var(--neon-soft);
+        letter-spacing: 1px;
+    }
+
+    header p {
+        margin-top: 8px;
+        color: var(--text-muted);
+    }
+
+    main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px 80px;
+    }
+
+    section {
+        background: linear-gradient(180deg, #0c0c0c, #070707);
+        border: 1px solid rgba(0,255,255,0.12);
+        border-radius: 12px;
+        padding: 28px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 25px rgba(0,255,255,0.05);
+    }
+
+    section h2 {
+        margin-top: 0;
+        color: var(--neon);
+        text-shadow: 0 0 8px var(--neon-soft);
+        border-bottom: 1px solid rgba(0,255,255,0.2);
+        padding-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    h3 {
+        margin-top: 20px;
+        color: var(--neon-soft);
+    }
+
+    p {
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        padding-left: 22px;
+    }
+
+    li {
+        margin: 8px 0;
+        color: var(--text-muted);
+    }
+
+    .example {
+        margin-top: 15px;
+        padding: 16px 18px;
+        background: rgba(0,255,255,0.06);
+        border-left: 4px solid var(--neon);
+        border-radius: 6px;
+        font-size: 20px;
+    }
+
+    .example p {
+        margin: 6px 0;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+
+    .nav-buttons a {
+        display: inline-block;
+        padding: 12px 26px;
+        color: var(--neon);
+        text-decoration: none;
+        border: 1px solid var(--neon);
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        transition: all 0.2s ease;
+    }
+
+    .nav-buttons a:hover {
+        background: rgba(0,255,255,0.1);
+        box-shadow: 0 0 25px rgba(0,255,255,0.6);
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: var(--text-muted);
+        border-top: 1px solid rgba(0,255,255,0.15);
+    }
+
+    .logo {
+        font-size: 42px;
+        font-family: 'Orbitron', sans-serif;
+        color: #0ff;
+        text-shadow: 0 0 15px #0ff;
+        cursor: default;
+    }
+
+    li.logo a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+    }
+
+    li.logo {
+        list-style: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        header h1 {
+            font-size: 2rem;
+        }
+
+        main {
+            max-width: 90%;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* Adjust for tablet and mobile devices */
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        section {
+            padding: 18px;
+        }
+
+        .example {
+            font-size: 18px;
+        }
+
+        .nav-buttons a {
+            padding: 10px 20px;
+        }
+
+        footer {
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* Adjust for very small screens (phones) */
+        header h1 {
+            font-size: 1.6rem;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            padding: 15px;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+        }
+
+        .nav-buttons a {
+            padding: 8px 16px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        footer {
+            padding: 15px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+  <li class="logo"><a href="index.html">The Cuber</a></li>
+  </nav>
+    <p>Beginner Guide — Yellow Corners</p>
+</header>
+
+<main>
+
+<section>
+    <h2>Goal: Permute the Yellow Corners</h2>
+    <p>
+        The Second-to-Last Step to solve the cube is to permute the yellow corners.
+        The goal in this step is to permute the yellow corners so that they are in their respective spot without breaking the rest. 
+        After this step, all that is left is to permute the yellow edges.
+    </p>
+</section>
+
+<section>
+    <h2>Step 1: Identify the case</h2>
+    <h3>Case 1: Diagonal</h3>
+    <p>
+       In this case <strong>the solved corners are diagonal from each other</strong>.
+       <strong>Turn</strong> the <strong>top layer</strong> until the <strong>solved corners </strong>are <strong>top right and bottom left</strong>.
+    <h3>Case 2: Not Diagonal </h3>
+    <p>
+       In this case <strong>the solved corners aren't diagonal from each other</strong>.
+       <strong>Turn</strong> the <strong>top layer</strong> until the <strong>solved corners </strong>are <strong>top left and bottom left</strong>.
+    </p>
+</section>
+
+<section>
+    <h2>Step 2: Performing the algorithm</h2>
+    Now that you have identified the case and oriented the cube correctly, you now want to perform one of the following algorithm depending on the case you have:
+    <div class="example">
+        <p><strong>Case 1 (Diagonal) Algorithm:</strong> <code>(F R U' R' U' R U R' F') (R U R' U' R' F R F')</code>  </p>
+    </div>
+    <div class="example">
+        <p><strong>Case 2 (Not Diagonal) Algorithm:</strong> <code>(R U R' U' R' F) (R2 U' R' U' R U R' F')</code>  </p>
+    </div>
+</section>
+
+<section>
+    <div class="example">
+        <p>🎉 Yellow corners are in place done — only one more step to go!</p>
+    </div>
+</section>
+
+<section>
+    <h2>Common Mistakes</h2>
+    <ul>
+        <li>Rotating the entire cube instead of only the top layer</li>
+        <li>Accidently doing the opposite move like R instead of R' or the opposite </li>
+    </ul>
+</section>
+
+<div class="nav-buttons">
+    <a href="yellowside.html">← Back to Yellow Side</a>
+    <a href="yellowedges.html">Continue to Yellow Edges →</a>
+</div>
+
+</main>
+
+<footer>
+    <p>© The Cuber — Beginner Series 🌼</p>
+</footer>
+
+</body>
+</html>

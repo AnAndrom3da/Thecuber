@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daisy Step | The Cuber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --neon: #00ffff;
+            --neon-soft: rgba(0,255,255,0.6);
+            --bg-dark: #050505;
+            --panel-dark: #0b0b0b;
+            --text-main: #e6ffff;
+            --text-muted: #9adede;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        header {
+            padding: 30px 40px;
+            border-bottom: 1px solid rgba(0,255,255,0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--neon);
+            text-shadow: 0 0 12px var(--neon-soft);
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 8px;
+            color: var(--text-muted);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px 80px;
+        }
+
+        section {
+            background: linear-gradient(180deg, #0c0c0c, #070707);
+            border: 1px solid rgba(0,255,255,0.12);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 25px rgba(0,255,255,0.05);
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: var(--neon);
+            text-shadow: 0 0 8px var(--neon-soft);
+            border-bottom: 1px solid rgba(0,255,255,0.2);
+            padding-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: var(--neon-soft);
+        }
+
+        p {
+            color: var(--text-main);
+        }
+
+        ul, ol {
+            padding-left: 22px;
+        }
+
+        li {
+            margin: 8px 0;
+            color: var(--text-muted);
+        }
+
+        .example {
+            margin-top: 15px;
+            padding: 16px 18px;
+            background: rgba(0,255,255,0.06);
+            border-left: 4px solid var(--neon);
+            border-radius: 6px;
+            font-size: 20px;
+        }
+
+        .example p {
+            margin: 6px 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-buttons a {
+            display: inline-block;
+            padding: 12px 26px;
+            color: var(--neon);
+            text-decoration: none;
+            border: 1px solid var(--neon);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,255,255,0.3);
+            transition: all 0.2s ease;
+        }
+
+        .nav-buttons a:hover {
+            background: rgba(0,255,255,0.1);
+            box-shadow: 0 0 25px rgba(0,255,255,0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(0,255,255,0.15);
+        }
+
+        .logo {
+            font-size: 42px;
+            font-family: 'Orbitron', sans-serif;
+            color: #0ff;
+            text-shadow: 0 0 15px #0ff;
+            cursor: default;
+        }
+
+        li.logo a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+        }
+
+        li.logo {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+  <li class="logo"><a href="index.html">The Cuber</a></li>
+  </nav>
+    <p>Beginner Guide — The Daisy Step 🌼</p>
+</header>
+
+<main>
+
+<section>
+    <h2>Welcome to the Daisy</h2>
+    <p>
+        This is the <strong>first step</strong> in the beginner method for solving
+        a 3×3 Rubik’s Cube.
+    </p>
+    <p>
+        Don’t worry about speed, memorization, or fancy moves yet.
+        This step is all about getting comfortable with the cube.
+    </p>
+</section>
+
+<section>
+    <h2>What Is the Daisy?</h2>
+    <p>
+        The <strong>Daisy</strong> is a simple pattern where the
+        <strong>yellow center</strong> is on top, and the
+        <strong>four white edge pieces</strong> sit around it.
+    </p>
+
+    <div class="example">
+        <p>🌼 Think of it like petals around a flower.</p>
+    </div>
+
+    <ul>
+        <li>Yellow center in the middle</li>
+        <li>Four white edge pieces around it</li>
+        <li>The white stickers point sideways, not down</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Important Cube Facts</h2>
+    <ul>
+        <li>Center pieces <strong>never move</strong></li>
+        <li>Edge pieces have <strong>two colors</strong></li>
+        <li>Corners have <strong>three colors</strong> (ignore these for now)</li>
+    </ul>
+
+    <p>
+        For the Daisy, you are only looking for
+        <strong>white edge pieces</strong>.
+    </p>
+</section>
+
+<section>
+    <h2>How to Hold the Cube</h2>
+    <p>
+        Hold the cube so the <strong>yellow center is on top</strong>.
+    </p>
+    <p>
+        Keep it there the entire time.
+    </p>
+
+    <div class="example">
+        <p>If the yellow center is on top, you’re doing it right 👍</p>
+    </div>
+</section>
+
+<section>
+    <h2>Step-by-Step: Making the Daisy</h2>
+
+    <h3>1. Find a White Edge</h3>
+    <p>
+        Look for a piece with <strong>white and one other color</strong>.
+        Make sure it is not a corner.
+    </p>
+
+    <h3>2. Bring It to the Top Layer</h3>
+    <p>
+        Use any turns you want to move that white edge to the top of the cube.
+    </p>
+    <p>
+        There are <strong>no wrong moves</strong> at this stage.
+    </p>
+
+    <h3>3. Place It Next to the Yellow Center</h3>
+    <p>
+        Move the piece so the white sticker is touching the yellow center.
+        The side color does <strong>not</strong> matter yet.
+    </p>
+
+    <h3>4. Repeat</h3>
+    <p>
+        Do the same thing until all four white edge pieces surround the yellow center.
+    </p>
+</section>
+
+<section>
+    <h2>What the Finished Daisy Looks Like</h2>
+    <ul>
+        <li>Yellow center on top</li>
+        <li>Four white edges around it</li>
+        <li>No white edges left anywhere else</li>
+    </ul>
+
+    <div class="example">
+        <p>If this matches your cube, you’re ready to move on 🎉</p>
+    </div>
+</section>
+
+<section>
+    <h2>Common Mistakes</h2>
+    <ul>
+        <li>Using white corners instead of edges</li>
+        <li>Letting the yellow center leave the top</li>
+        <li>Trying to match side colors too early</li>
+        <li>Thinking the cube looks “worse” than before</li>
+    </ul>
+
+    <p>
+        Don’t worry — the cube is supposed to look messy right now.
+    </p>
+</section>
+
+<section>
+    <h2>Why Do We Make the Daisy?</h2>
+    <p>
+        The Daisy makes the next step — the <strong>White Cross</strong> —
+        much easier.
+    </p>
+    <p>
+        It helps you learn how edge pieces move without pressure.
+    </p>
+</section>
+
+<section>
+    <h2>You’re Doing Great</h2>
+    <p>
+        If this is your first time solving a cube, you’re already making progress.
+        Everyone starts here.
+    </p>
+    <p>
+        Go slow. Be patient. Understanding comes first.
+    </p>
+</section>
+
+<div class="nav-buttons">
+    <a href="index.html">← Back to Home Page</a>
+    <a href="firstlayer.html">Continue to First Layer →</a>
+</div>
+
+</main>
+
+<footer>
+    <p>© The Cuber — Beginner Series 🌼</p>
+</footer>
+
+</body>
+</html>

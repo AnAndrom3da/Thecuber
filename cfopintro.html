@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFOP Intro | The Cuber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+        --neon: #00ffff;
+        --neon-soft: rgba(0,255,255,0.6);
+        --bg-dark: #050505;
+        --panel-dark: #0b0b0b;
+        --text-main: #e6ffff;
+        --text-muted: #9adede;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+        color: var(--text-main);
+        line-height: 1.7;
+    }
+
+    header {
+        padding: 30px 40px;
+        border-bottom: 1px solid rgba(0,255,255,0.15);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: var(--neon);
+        text-shadow: 0 0 12px var(--neon-soft);
+        letter-spacing: 1px;
+    }
+
+    header p {
+        margin-top: 8px;
+        color: var(--text-muted);
+    }
+
+    main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px 80px;
+    }
+
+    section {
+        background: linear-gradient(180deg, #0c0c0c, #070707);
+        border: 1px solid rgba(0,255,255,0.12);
+        border-radius: 12px;
+        padding: 28px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 25px rgba(0,255,255,0.05);
+    }
+
+    section h2 {
+        margin-top: 0;
+        color: var(--neon);
+        text-shadow: 0 0 8px var(--neon-soft);
+        border-bottom: 1px solid rgba(0,255,255,0.2);
+        padding-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    h3 {
+        margin-top: 20px;
+        color: var(--neon-soft);
+    }
+
+    p {
+        color: var(--text-main);
+    }
+
+    ul, ol {
+        padding-left: 22px;
+    }
+
+    li {
+        margin: 8px 0;
+        color: var(--text-muted);
+    }
+
+    .example {
+        margin-top: 15px;
+        padding: 16px 18px;
+        background: rgba(0,255,255,0.06);
+        border-left: 4px solid var(--neon);
+        border-radius: 6px;
+        font-size: 20px;
+    }
+
+    .example p {
+        margin: 6px 0;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+
+    .nav-buttons a {
+        display: inline-block;
+        padding: 12px 26px;
+        color: var(--neon);
+        text-decoration: none;
+        border: 1px solid var(--neon);
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        transition: all 0.2s ease;
+    }
+
+    .nav-buttons a:hover {
+        background: rgba(0,255,255,0.1);
+        box-shadow: 0 0 25px rgba(0,255,255,0.6);
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: var(--text-muted);
+        border-top: 1px solid rgba(0,255,255,0.15);
+    }
+
+    .logo {
+        font-size: 42px;
+        font-family: 'Orbitron', sans-serif;
+        color: #0ff;
+        text-shadow: 0 0 15px #0ff;
+        cursor: default;
+    }
+
+    li.logo a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+    }
+
+    li.logo {
+        list-style: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        header h1 {
+            font-size: 2rem;
+        }
+
+        main {
+            max-width: 90%;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* Adjust for tablet and mobile devices */
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        section {
+            padding: 18px;
+        }
+
+        .example {
+            font-size: 18px;
+        }
+
+        .nav-buttons a {
+            padding: 10px 20px;
+        }
+
+        footer {
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .nav-buttons a {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        /* Adjust for very small screens (phones) */
+        header h1 {
+            font-size: 1.6rem;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            padding: 15px;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+        }
+
+        .nav-buttons a {
+            padding: 8px 16px;
+        }
+
+        .logo {
+            font-size: 42px;
+        }
+
+        li.logo a {
+            font-size: 42px;
+        }
+
+        footer {
+            padding: 15px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+  <li class="logo"><a href="index.html">The Cuber</a></li>
+  </nav>
+    <p>Intermediate Guide — CFOP Intro</p>
+</header>
+
+<main>
+
+<section>
+    <h2>Goal: Learn and understand what the CFOP method is</h2>
+    <p>
+        CFOP is one of the most popular methods for solving the 3×3 cube, used by countless world-class speedcubers such as Feliks Zemdegs, Max Park, and Mats Valk. The method is structured around four steps — C for Cross, F for F2L, O for OLL, and P for PLL — which together form the foundation of modern speedcubing.
+    </p>
+</section>
+
+<section>
+    <h2>The Cross </h2>
+    <p>
+       The first step of CFOP is called the Cross. The goal is to solve four edge pieces so that they form a cross on one face of the cube, usually the white face.
+
+A proper cross doesn’t just match the color of the face — the side colors of the edges should also align with the centers of the adjacent sides. Getting the cross right is essential, as it sets the foundation for the rest of your solve and makes F2L much faster.
+
+Most beginners solve the cross one piece at a time, but advanced cubers plan the entire cross during inspection and solve it in just a few moves. Mastering this step early will make your progression through CFOP smoother and more efficient.
+    </p>
+</section>
+<section>
+    <h2>The First Two Layers </h2>
+    <p>
+       After solving the cross, the next step in CFOP is F2L, which completes the first two layers of the cube at the same time.
+
+F2L involves pairing up a corner and its corresponding edge, then inserting them together into their correct slot. Doing this efficiently is key to faster solves, because it reduces the number of moves compared to solving the first layer corners and second layer edges separately.
+
+Beginners usually insert pairs one at a time using simple techniques, while more advanced cubers learn to recognize patterns and insert pairs with minimal moves. A strong F2L will save you time and make the rest of CFOP much smoother.
+    </p>
+</section>
+<section>
+    <h2>OLL </h2>
+    <p>
+        Once the first two layers are complete, the next step is OLL, which stands for Orientation of the Last Layer.
+
+The goal of OLL is to make all the pieces on the last layer face the same direction, usually so the top color is uniform. At this stage, the pieces may be in the correct position, but their orientation isn’t finished.
+
+Beginners often use 2-Look OLL, solving the last layer in two parts, while advanced cubers learn to complete it in a single algorithm. Mastering OLL is essential for speed, as a correctly oriented last layer sets up a smooth finish with PLL.
+    </p>   
+</section>
+<section>
+    <h2>PLL </h2>
+    <p>
+        The final step of CFOP is PLL, which stands for Permutation of the Last Layer.
+
+At this stage, the last layer pieces are all correctly oriented, but they may not be in the right positions. PLL rearranges these pieces so that every piece is in its correct spot, completing the cube.
+
+Beginners often use 2-Look PLL, solving it in two steps, while advanced cubers learn full PLL algorithms to finish the last layer in a single sequence. Mastering PLL is crucial for fast solves, as it allows you to complete the cube efficiently after finishing OLL.
+    </p>   
+</section>
+<section>
+    <div class="example">
+        <p>🎉 Nice! You now know what CFOP is! You can now move on to learn some of the basic OLL and PLL algorithms! </p>
+    </div>
+</section>
+
+
+<div class="nav-buttons">
+    <a href="index.html">← Go to Home Page</a>
+    <a href="ollbasics.html">Continue to the OLL basics →</a>
+</div>
+
+</main>
+
+<footer>
+    <p>© The Cuber — Beginner Series 🌼</p>
+</footer>
+
+</body>
+</html>

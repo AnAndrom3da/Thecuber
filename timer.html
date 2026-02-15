@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cuber/Timer</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Body */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: rgba(10,10,10,0.9);
+  box-shadow: 0 0 15px #00f;
+}
+
+.logo {
+  font-size: 24px;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff;
+  cursor: default;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #0ff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+/* Timer Container */
+.timer-container {
+  text-align: center;
+  margin: 150px 20px;
+}
+
+.timer-display {
+  font-size: 100px;
+  color: #0ff;
+  text-shadow: 0 0 30px #0ff, 0 0 60px #0ff;
+  margin-bottom: 50px;
+  letter-spacing: 4px;
+}
+
+/* Buttons */
+.timer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.btn {
+  padding: 15px 40px;
+  font-size: 18px;
+  color: #0ff;
+  border: 2px solid #0ff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  background: transparent;
+}
+
+.btn:hover {
+  background: #0ff;
+  color: #000;
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+}
+
+/* History */
+.history {
+  max-width: 600px;
+  margin: 0 auto 100px auto;
+  text-align: left;
+}
+
+.history h2 {
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.history li {
+  background: rgba(20,20,20,0.9);
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.history li:hover {
+  background: rgba(0,255,255,0.2);
+}
+
+/* Popup Options */
+.popup {
+  position: absolute;
+  background: rgba(20,20,20,0.95);
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 1000;
+}
+
+.popup button {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  padding: 5px 10px;
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  color: #0ff;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.popup button:hover {
+  background: #0ff;
+  color: #000;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(10,10,10,0.9);
+  border-top: 1px solid #0ff;
+  color: #0ff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: rgba(10,10,10,0.9);
+  box-shadow: 0 0 15px #00f;
+}
+
+.logo {
+  font-size: 50px;
+  color: #0ff;
+  text-shadow: 0 0 15px #0ff;
+  cursor: default;
+}
+
+li.logo a {
+  text-decoration: none; /* removes underline */
+  color: inherit;        /* keeps the text color same as parent */
+  font-weight: bold;     /* optional: make it stand out like a logo */
+
+}
+
+li.logo {
+  list-style: none; /* removes the dot */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #0ff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: rgba(20,20,20,0.95);
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 100;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sub-dropdown Menu (LEFT) */
+.sub-dropdown {
+  position: relative;
+}
+
+.sub-dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 180px; /* slide LEFT of parent */
+  background: rgba(30,30,30,0.95);
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  min-width: 220px;
+  padding: 10px 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sub-dropdown:hover > .sub-dropdown-menu,
+.sub-dropdown-menu:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Third-level sub-dropdown (inside 7 steps) */
+.sub2-dropdown {
+  position: relative;
+}
+
+.sub2-dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 100%; /* slide LEFT of parent */
+  background: rgba(40,40,40,0.95);
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  min-width: 220px;
+  padding: 10px 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sub2-dropdown:hover > .sub2-dropdown-menu,
+.sub2-dropdown-menu:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dropdown Items */
+.dropdown-menu li,
+.sub-dropdown-menu li,
+.sub2-dropdown-menu li {
+  padding: 10px 20px;
+}
+
+.dropdown-menu li:hover,
+.sub-dropdown-menu li:hover,
+.sub2-dropdown-menu li:hover {
+  background: rgba(0,255,255,0.2);
+  cursor: pointer;
+}
+
+/* Optional scroll if too long */
+.sub-dropdown-menu,
+.sub2-dropdown-menu {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdown-menu,
+.sub-dropdown-menu {
+  overflow: visible;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #0D0D0D, #111111);
+}
+
+.hero h1 {
+  font-size: 48px;
+  color: #0ff;
+  text-shadow: 0 0 20px #0ff;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.hero .btn {
+  text-decoration: none;
+  color: #0ff;
+  border: 2px solid #0ff;
+  padding: 10px 25px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.hero .btn:hover {
+  background: #0ff;
+  color: #000;
+  box-shadow: 0 0 15px #0ff;
+}
+
+/* Features Section */
+.features {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.features h2 {
+  font-size: 36px;
+  color: #0ff;
+  margin-bottom: 50px;
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: rgba(20,20,20,0.9);
+  border: 1px solid #0ff;
+  border-radius: 10px;
+  padding: 30px 20px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px #0ff;
+}
+
+.card h3 {
+  color: #0ff;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(10,10,10,0.9);
+  border-top: 1px solid #0ff;
+  color: #0ff;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <li class="logo"><a href="index.html">The Cuber</a></li>
+  <ul class="nav-links">
+    <li><a href="timer.html">Timer</a></li>
+    <li><a href="algorithmtrainer.html">Algorithm Trainer</a></li>
+    <li class="dropdown">
+      <a href="#">3x3 Cube ▼</a>
+      <ul class="dropdown-menu">
+        <!-- Beginner -->
+        <li class="sub-dropdown">
+          <a href="#">Beginner</a>
+          <ul class="sub-dropdown-menu">
+            <li><a href="howtoreadalgorithms.html">How to read Algorithms</a></li>
+            <li class="sub2-dropdown">
+              <a href="#">The 7 steps to solve a cube ▼</a>
+              <ul class="sub2-dropdown-menu">
+                <li><a href="daisy.html">Daisy</a></li>
+                <li><a href="firstlayer.html">First Layer</a></li>
+                <li><a href="secondlayer.html">Second Layer</a></li>
+                <li><a href="yellowcross.html">Yellow Cross</a></li>
+                <li><a href="yellowside.html">Yellow Side</a></li>
+                <li><a href="yellowcorners.html">Yellow Layer Corners</a></li>
+                <li><a href="yellowedges.html">Yellow Layer Edges</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <!-- Intermediate -->
+        <li class="sub-dropdown">
+          <a href="#">Intermediate</a>
+          <ul class="sub-dropdown-menu">
+            <li><a href="algorithmsets.html">Algorithm Sets</a></li>
+            <li><a href="ollbasics.html">OLL Basics</a></li>
+            <li><a href="pllbasics.html">PLL Basics</a></li>
+            <li><a href="edgecontrol.html">Edge Control</a></li>
+          </ul>
+        </li>
+        <!-- Advanced -->
+        <li class="sub-dropdown">
+          <a href="#">Advanced</a>
+          <ul class="sub-dropdown-menu">
+            <li><a href="fullf2l.html">Full F2L</a></li>
+            <li><a href="fulloll.html">Full OLL</a></li>
+            <li><a href="fullpll.html">Full PLL</a></li>
+            <li><a href="fingertricks.html">Finger Tricks</a></li>
+            <li><a href="lookahead.html">Lookahead Techniques</a></li>
+          </ul>
+        </li>
+        <!-- Pro -->
+        <li class="sub-dropdown">
+          <a href="#">Pro</a>
+          <ul class="sub-dropdown-menu">
+            <li><a href="speedsolvingtips.html">Speed Solving Tips</a></li>
+            <li><a href="fullollpll.html">Full OLL/PLL Sets</a></li>
+            <li><a href="advancedalgorithms.html">Advanced Algorithms</a></li>
+            <li><a href="competitionstrategies.html">Competition Strategies</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!-- Timer Section -->
+<div class="timer-container">
+  <div class="timer-display" id="timer">00:00:000</div>
+  <div class="timer-buttons">
+    <button class="btn" id="startStopBtn">Start</button>
+    <button class="btn" id="resetBtn">Reset</button>
+  </div>
+</div>
+
+<!-- History -->
+<div class="history">
+  <h2>Solve History</h2>
+  <ul id="historyList"></ul>
+</div>
+
+<footer>
+  &copy; 2026 CubeMaster | All rights reserved
+</footer>
+
+<script>
+let timer = null;
+let startTime = 0;
+let elapsedTime = 0;
+let running = false;
+
+const display = document.getElementById('timer');
+const startStopBtn = document.getElementById('startStopBtn');
+const resetBtn = document.getElementById('resetBtn');
+const historyList = document.getElementById('historyList');
+let popup = null;
+
+// Format time function
+function formatTime(ms) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  const milliseconds = ms % 1000;
+  return `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}:${milliseconds.toString().padStart(3,'0')}`;
+}
+
+// Update display
+function updateTimer() {
+  elapsedTime = Date.now() - startTime;
+  display.textContent = formatTime(elapsedTime);
+}
+
+// Toggle Start/Stop
+function toggleTimer() {
+  if (!running) {
+    running = true;
+    startTime = Date.now() - elapsedTime;
+    timer = setInterval(updateTimer, 10);
+    startStopBtn.textContent = "Stop";
+  } else {
+    running = false;
+    clearInterval(timer);
+    startStopBtn.textContent = "Start";
+    // Add to history
+    addSolveToHistory(elapsedTime);
+  }
+}
+
+// Reset
+function resetTimer() {
+  running = false;
+  clearInterval(timer);
+  elapsedTime = 0;
+  display.textContent = "00:00:000";
+  startStopBtn.textContent = "Start";
+}
+
+// Add solve to history
+function addSolveToHistory(ms) {
+  const li = document.createElement('li');
+  li.textContent = formatTime(ms);
+  li.addEventListener('click', (e) => showPopup(e, li));
+  historyList.prepend(li);
+}
+
+// Show popup on time click
+function showPopup(e, li) {
+  if (popup) popup.remove();
+
+  popup = document.createElement('div');
+  popup.className = 'popup';
+
+  // Back button
+  const backBtn = document.createElement('button');
+  backBtn.textContent = 'Back';
+  backBtn.onclick = () => popup.remove();
+  popup.appendChild(backBtn);
+
+  // +2 button
+  const plus2Btn = document.createElement('button');
+  plus2Btn.textContent = '+2';
+  plus2Btn.onclick = () => {
+    const parts = li.textContent.split(':');
+    let minutes = parseInt(parts[0]);
+    let seconds = parseInt(parts[1]);
+    let milliseconds = parseInt(parts[2]) + 2000;
+    seconds += Math.floor(milliseconds / 1000);
+    milliseconds = milliseconds % 1000;
+    minutes += Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    li.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}:${milliseconds.toString().padStart(3,'0')}`;
+    popup.remove();
+  };
+  popup.appendChild(plus2Btn);
+
+  // DNF button
+  const dnfBtn = document.createElement('button');
+  dnfBtn.textContent = 'DNF';
+  dnfBtn.onclick = () => {
+    li.textContent = 'DNF';
+    popup.remove();
+  };
+  popup.appendChild(dnfBtn);
+
+  // Delete button
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.onclick = () => {
+    li.remove();
+    popup.remove();
+  };
+  popup.appendChild(deleteBtn);
+
+  document.body.appendChild(popup);
+
+  // Position popup near mouse
+  const rect = li.getBoundingClientRect();
+  popup.style.top = (rect.top + window.scrollY + li.offsetHeight) + 'px';
+  popup.style.left = rect.left + 'px';
+}
+
+// Event listeners
+startStopBtn.addEventListener('click', toggleTimer);
+resetBtn.addEventListener('click', resetTimer);
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if (e.code === "Space") {
+    e.preventDefault();
+    toggleTimer();
+  } else if (e.code === "KeyR") {
+    resetTimer();
+  }
+});
+</script>
+
+</body>
+</html>
