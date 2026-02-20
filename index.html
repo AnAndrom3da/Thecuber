@@ -417,6 +417,38 @@ footer {
   <ul class="nav-links">
     <li><a href="timer.html">Timer</a></li>
     <li><a href="algorithmtrainer.html">Algorithm Trainer</a></li>
+    <!-- 2x2 -->
+<li class="dropdown">
+  <a href="index.html">2x2 Cube ▼</a>
+  <ul class="dropdown-menu">
+    
+    <!-- Beginner -->
+    <li class="sub-dropdown">
+          <a href="index.html">Beginner</a>
+          <ul class="sub-dropdown-menu">
+            <li><a href="2x2basics.html">2x2 Basics</a></li>
+            <li class="sub2-dropdown">  
+              <a href="index.html">The 3 steps to solve a 2x2 ▼</a>
+              <ul class="sub2-dropdown-menu">
+                <li><a href="firstlayer2x2.html">First Layer</a></li>
+                <li><a href="yellowside2x2.html">Yellow Side</a></li>
+                <li><a href="yellowcorners2x2.html">Yellow Layer Corners</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+    <!-- Intermediate -->
+    <li class="sub-dropdown">
+      <a href="index.html">Intermediate</a>
+      <ul class="sub-dropdown-menu">
+        <li><a href="2x2advancedoll.html">Advanced OLL</a></li>
+        <li><a href="2x2advancedpll.html">Advanced PLL</a></li>
+      </ul>
+    </li>
+
+  </ul>
+</li>
     <li class="dropdown">
       <a href="index.html">3x3 Cube ▼</a>
       <ul class="dropdown-menu">
@@ -500,20 +532,24 @@ footer {
 
 <script>
 /* Optional JS delay to prevent dropdown from disappearing instantly */
-const dropdown = document.querySelector('.dropdown');
-const menu = dropdown.querySelector('.dropdown-menu');
-let timeout;
+const dropdowns = document.querySelectorAll('.dropdown');
 
-dropdown.addEventListener('mouseenter', () => {
-  clearTimeout(timeout);
-  menu.style.display = 'block';
+dropdowns.forEach(dropdown => {
+  const menu = dropdown.querySelector('.dropdown-menu');
+  let timeout;
+
+  dropdown.addEventListener('mouseenter', () => {
+    clearTimeout(timeout);
+    menu.style.display = 'block';
+  });
+
+  dropdown.addEventListener('mouseleave', () => {
+    timeout = setTimeout(() => {
+      menu.style.display = 'none';
+    }, 300);
+  });
 });
 
-dropdown.addEventListener('mouseleave', () => {
-  timeout = setTimeout(() => {
-    menu.style.display = 'none';
-  }, 300); // 300ms delay before hiding
-});
 </script>
 
 <script>
@@ -531,3 +567,4 @@ if ("serviceWorker" in navigator) {
 
 </body>
 </html>
+
