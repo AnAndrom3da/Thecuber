@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daisy Step | The Cuber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --neon: #00ffff;
+            --neon-soft: rgba(0,255,255,0.6);
+            --bg-dark: #050505;
+            --panel-dark: #0b0b0b;
+            --text-main: #e6ffff;
+            --text-muted: #9adede;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0D0D0D, #1A1A1A);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        header {
+            padding: 30px 40px;
+            border-bottom: 1px solid rgba(0,255,255,0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--neon);
+            text-shadow: 0 0 12px var(--neon-soft);
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 8px;
+            color: var(--text-muted);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px 80px;
+        }
+
+        section {
+            background: linear-gradient(180deg, #0c0c0c, #070707);
+            border: 1px solid rgba(0,255,255,0.12);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 25px rgba(0,255,255,0.05);
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: var(--neon);
+            text-shadow: 0 0 8px var(--neon-soft);
+            border-bottom: 1px solid rgba(0,255,255,0.2);
+            padding-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: var(--neon-soft);
+        }
+
+        p {
+            color: var(--text-main);
+        }
+
+        ul, ol {
+            padding-left: 22px;
+        }
+
+        li {
+            margin: 8px 0;
+            color: var(--text-muted);
+        }
+
+        .example {
+            margin-top: 15px;
+            padding: 16px 18px;
+            background: rgba(0,255,255,0.06);
+            border-left: 4px solid var(--neon);
+            border-radius: 6px;
+            font-size: 20px;
+        }
+
+        .example p {
+            margin: 6px 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nav-buttons a {
+            display: inline-block;
+            padding: 12px 26px;
+            color: var(--neon);
+            text-decoration: none;
+            border: 1px solid var(--neon);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,255,255,0.3);
+            transition: all 0.2s ease;
+        }
+
+        .nav-buttons a:hover {
+            background: rgba(0,255,255,0.1);
+            box-shadow: 0 0 25px rgba(0,255,255,0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(0,255,255,0.15);
+        }
+
+        .logo {
+            font-size: 42px;
+            font-family: 'Orbitron', sans-serif;
+            color: #0ff;
+            text-shadow: 0 0 15px #0ff;
+            cursor: default;
+        }
+
+        li.logo a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+        }
+
+        li.logo {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+  <li class="logo"><a href="index.html">The Cuber</a></li>
+  </nav>
+    <p>Beginner Guide — 2x2 Basics 🌼</p>
+</header>
+
+<main>
+
+<section>
+    <h2>Welcome to the 2x2 Cube</h2>
+    <p>
+        The 2x2 cube is often called the "Pocket Cube".
+    </p>
+    <p>
+        Unlike the 3x3, it has <strong>no edge pieces</strong> and <strong>no center pieces</strong>.
+        It is made up entirely of <strong>corner pieces</strong>.
+    </p>
+</section>
+
+<section>
+    <h2>How Is 2x2 Different From 3x3?</h2>
+    <ul>
+        <li>No center pieces</li>
+        <li>No edge pieces</li>
+        <li>Only 8 corner pieces total</li>
+        <li>Each piece has 3 colors</li>
+    </ul>
+    <div class="example">
+        Think of the 2x2 as just the corners of a 3x3 cube.
+    </div>
+</section>
+
+<section>
+    <h2>Your Goal</h2>
+    <p>
+        The goal is to make each side one solid color.
+    </p>
+    <p>
+        Because there are only corners, solving the 2x2 is faster
+        but requires learning how corner pieces move.
+    </p>
+</section>
+
+<section>
+    <h2>Step 1: Solve One Layer</h2>
+    <p>
+        Start by solving one full face (usually white).
+    </p>
+    <p>
+        Make sure the bottom layer is fully solved before moving on.
+    </p>
+</section>
+
+<section>
+    <h2>Step 2: Solve the Top Layer</h2>
+    <p>
+        Once the first layer is complete, you will use a simple algorithm
+        to orient and permute the remaining corners.
+    </p>
+</section>
+
+<section>
+    <h2>Basic Beginner Algorithm</h2>
+    <div class="example">
+        R U R' U'
+    </div>
+    <p>
+        This is the most important beginner algorithm for 2x2.
+        You will use it multiple times to solve the cube.
+    </p>
+</section>
+
+<section>
+    <h2>You’re Ready</h2>
+    <p>
+        The 2x2 is a great cube to start speed solving.
+    </p>
+    <p>
+        Practice solving slowly first — speed comes later.
+    </p>
+</section>
+
+<div class="nav-buttons">
+    <a href="index.html">← Back to Home Page</a>
+    <a href="#">Next Step →</a>
+</div>
+
+</main>
+
+<footer>
+    <p>© The Cuber — Beginner Series 🌼</p>
+</footer>
+
+</body>
+</html>
